@@ -1,37 +1,65 @@
+var start = document.getElementById("start")
+var beingQuestion = document.getElementById("question-btn")
+var question = document.getElementById("question")
+var optionEl = document.getElementById("answer-btn")
 
 
+start.addEventListener("click", startQuiz);
 
+function startQuiz() {
+    start.classList.add("hide")
+    highscore.classList.add("hide")
+    beginQuestion();
+}
 
+function beginQuestion() {
+    question.innerText = questionArr[id].Question;
+};
 
-var questionsArr = [
+function nextQuestion() {
+
+}
+
+function Answer() {
+
+}
+
+var questionArr = [
     {
         Question: "Who created JavaScript?",
-        A: "Al Gore",
-        B: "Brendan Eich",
-        C: "Bill Gates",
-        D: "Steve Jobs",
+        options: [
+            { text: "Al Gore", Correct: false },
+            { text: "Brendan Eich", Correct: true },
+            { text: "Bill Gates", Correct: false },
+            { text: "Steve Jobs", Correct: false },
+        ]
     },
     {
         Question: "What does CSS stand for?",
-        A: "cascading style sheets",
-        B: "creative style sheets",
-        C: "compact style script",
-        D: "compressed style sheets",
+        options: [
+            { text: "cascading style sheets", Correct: true },
+            { text: "creative style sheets", Correct: false },
+            { text: "compact style script", Correct: false },
+            { text: "compressed style sheets", Correct: false },
+        ]
     },
     {
         Question: "What allows users to interact with web pages?",
-        A: "HTML",
-        B: "CSS",
-        C: "Javascript",
-        D: "Mouse & Keyboards",
+        options: [
+            { text: "HTML", Correct: false },
+            { text: "CSS", Correct: false },
+            { text: "Javascript", Correct: true },
+            { text: "Mouse & Keyboards", Correct: false },
+        ]
     },
     {
         Question: "Can you add HTML elements dynamically with Javascript",
-        A: "No",
-        B: "Maybe",
-        C: "Only with jquery",
-        D: "Yes",
+        options: [
+            { text: "No", Correct: false },
+            { text: "Maybe", Correct: false },
+            { text: "Only with jquery", Correct: false },
+            { text: "Yes", Correct: true },
+        ]
     },
 ];
 
-document.getElementById("start").addEventListener("click", console.log("Hello!"));
