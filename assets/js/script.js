@@ -1,30 +1,23 @@
 var start = document.getElementById("start")
-var beingQuestion = document.getElementById("question-btn")
 var question = document.getElementById("question")
 var optionEl = document.getElementById("answer-btn")
+var questionCard = document.getElementById("question-card")
+var optionBtnA = document.getElementById("0")
+var optionBtnB = document.getElementById("1")
+var optionBtnC = document.getElementById("2")
+var optionBtnD = document.getElementById("3")
+
 
 
 start.addEventListener("click", startQuiz);
 
-function startQuiz() {
-    start.classList.add("hide")
-    highscore.classList.add("hide")
-    beginQuestion();
-}
-
-function beginQuestion() {
-    question.innerText = questionArr[id].Question;
-};
-
-function nextQuestion() {
-
-}
-
-function Answer() {
-
-}
+optionBtnA.addEventListener("click", answerCheck)
+optionBtnB.addEventListener("click", answerCheck)
+optionBtnC.addEventListener("click", answerCheck)
+optionBtnD.addEventListener("click", answerCheck)
 
 var questionArr = [
+
     {
         Question: "Who created JavaScript?",
         options: [
@@ -63,3 +56,51 @@ var questionArr = [
     },
 ];
 
+var id = 0;
+
+function startQuiz() {
+    start.classList.add("hide")
+    highscore.classList.add("hide")
+    questionCard.classList.remove("hide")
+    beginQuestion();
+}
+
+function beginQuestion() {
+
+    question.innerText = questionArr[id].Question;
+    optionBtnA.innerText = questionArr[id].options[id].text;
+    optionBtnB.innerText = questionArr[id].options[id + 1].text;
+    optionBtnC.innerText = questionArr[id].options[id + 2].text;
+    optionBtnD.innerText = questionArr[id].options[id + 3].text;
+
+};
+
+function answerCheck(event) {
+    console.log(event.target)
+    console.log(event.target.id)
+    console.log(questionArr[0].options[event.target.id].Correct)
+
+    if (questionArr[0].options[event.target.id].Correct === true) {
+        window.alert("You got it right!")
+
+    }
+    else {
+
+    }
+
+
+}
+
+
+// Acceptance Criteria
+// GIVEN I am taking a code quiz
+// WHEN I click the start button
+// THEN a timer starts and I am presented with a question
+// WHEN I answer a question
+// THEN I am presented with another question
+// WHEN I answer a question incorrectly
+// THEN time is subtracted from the clock
+// WHEN all questions are answered or the timer reaches 0
+// THEN the game is over
+// WHEN the game is over
+// THEN I can save my initials and score
